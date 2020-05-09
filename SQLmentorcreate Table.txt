@@ -1,0 +1,199 @@
+SQL> CREATE TABLE AAA
+  2  (ID NUMBER(4)PRIMARY KEY,
+  3  NAME VARCHAR2(15),
+  4  SALARY NUMBER(5,2));
+
+Table created.
+
+SQL> DESC AAA
+ Name                                                                                                                                                                                                                                      Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ID                                                                                                                                                                                                                                        NOT NULL NUMBER(4)
+ NAME                                                                                                                                                                                                                                               VARCHAR2(15)
+ SALARY                                                                                                                                                                                                                                             NUMBER(5,2)
+
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* INSERT INTO AAA(ID,NAME,SALARY) VALUES(1001,'FERDOUS',950)
+SQL> /
+
+1 row created.
+
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  ALTER TABLE AAA
+  2* MODIFY SALARY NUMBER(8,2)
+SQL> /
+
+Table altered.
+
+SQL> UPDATE AAA
+  2  SET SALARY =9500
+  3  WHERE ID =1001;
+
+1 row updated.
+
+SQL> SELECT * FROM AAA;
+
+        ID NAME                SALARY                                                                                                                                                                                                                                                                                                                                                                           
+---------- --------------- ----------                                                                                                                                                                                                                                                                                                                                                                           
+      1001 FERDOUS               9500                                                                                                                                                                                                                                                                                                                                                                           
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  INSERT ALL
+  2  INTO AAA(ID,NAME,SALARY) VALUES(1002,'RUPOM',8500)
+  3  INTO AAA(ID,NAME,SALARY) VALUES(1003,'MONOZ',8500)
+  4  INTO AAA(ID,NAME,SALARY) VALUES(1002,'MOTIN',8500)
+  5  SELECT * 
+  6* FROM DUAL 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  INSERT ALL
+  2  INTO AAA(ID,NAME,SALARY) VALUES(1002,'RUPOM',8500)
+  3  INTO AAA(ID,NAME,SALARY) VALUES(1003,'MONOZ',8500)
+  4  INTO AAA(ID,NAME,SALARY) VALUES(1004,'MOTIN',8500)
+  5  SELECT * 
+  6* FROM DUAL 
+SQL> /
+
+3 rows created.
+
+SQL> SELECT * FROM AAA;
+
+        ID NAME                SALARY                                                                                                                                                                                                                                                                                                                                                                           
+---------- --------------- ----------                                                                                                                                                                                                                                                                                                                                                                           
+      1001 FERDOUS               9500                                                                                                                                                                                                                                                                                                                                                                           
+      1002 RUPOM                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1003 MONOZ                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1004 MOTIN                 8500                                                                                                                                                                                                                                                                                                                                                                           
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1* SELECT * FROM AAA
+SQL> @C:\SQLPRACTICE\SQLINSERT.TXT;
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+SQL> SELECT * FROM AAA;
+
+        ID NAME                SALARY                                                                                                                                                                                                                                                                                                                                                                           
+---------- --------------- ----------                                                                                                                                                                                                                                                                                                                                                                           
+      1001 FERDOUS               9500                                                                                                                                                                                                                                                                                                                                                                           
+      1002 RUPOM                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1003 MONOZ                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1004 MOTIN                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1005 RASUL                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1006 KUMAR                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1007 AZAD                  9000                                                                                                                                                                                                                                                                                                                                                                           
+      1008 ZAHID                 9000                                                                                                                                                                                                                                                                                                                                                                           
+
+8 rows selected.
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> DELETE FROM AAA
+  2  WHERE ID =1007;
+
+1 row deleted.
+
+SQL> ALTER TABLE AAA
+  2  ADD ADDRESS VARCHAR2(30);
+
+Table altered.
+
+SQL> SELECT * FROM AAA;
+
+        ID NAME                SALARY ADDRESS                                                                                                                                                                                                                                                                                                                                                                   
+---------- --------------- ---------- ------------------------------                                                                                                                                                                                                                                                                                                                                            
+      1001 FERDOUS               9500                                                                                                                                                                                                                                                                                                                                                                           
+      1002 RUPOM                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1003 MONOZ                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1004 MOTIN                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1005 RASUL                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1006 KUMAR                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1008 ZAHID                 9000                                                                                                                                                                                                                                                                                                                                                                           
+
+7 rows selected.
+
+
+
+
+SQL> ALTER TABLE AAA
+  2  DROP COLUMN ADDRESS;
+
+Table altered.
+
+
+
+
+SQL> RENAME AAA TO PNT;
+
+Table renamed.
+
+
+
+SQL> SELECT * FROM PNT;
+
+        ID NAME                SALARY                                                                                                                                                                                                                                                                                                                                                                           
+---------- --------------- ----------                                                                                                                                                                                                                                                                                                                                                                           
+      1001 FERDOUS               9500                                                                                                                                                                                                                                                                                                                                                                           
+      1002 RUPOM                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1003 MONOZ                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1004 MOTIN                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1005 RASUL                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1006 KUMAR                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1008 ZAHID                 9000                                                                                                                                                                                                                                                                                                                                                                           
+
+7 rows selected.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM PNT;
+
+        ID NAME                SALARY                                                                                                                                                                                                                                                                                                                                                                           
+---------- --------------- ----------                                                                                                                                                                                                                                                                                                                                                                           
+      1001 FERDOUS               9500                                                                                                                                                                                                                                                                                                                                                                           
+      1002 RUPOM                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1003 MONOZ                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1004 MOTIN                 8500                                                                                                                                                                                                                                                                                                                                                                           
+      1005 RASUL                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1006 KUMAR                 9000                                                                                                                                                                                                                                                                                                                                                                           
+      1008 ZAHID                 9000                                                                                                                                                                                                                                                                                                                                                                           
+
+7 rows selected.
+
+SQL> SELECT * FROM AAA;
+
+
+
+SQL> DELETE FROM PNT
+  2  WHERE ID =1008;
+
+
+
+SQL> spool off
